@@ -13,4 +13,5 @@
 	src="inc/left.html" name="leftmenu" id="mainFrame" title="mainFrame">
 <frame src="main.html" name="main" scrolling="yes" noresize="noresize"
 	id="rightFrame" title="rightFrame"></frameset></frameset>
+	啊啊啊啊啊啊
 </html>
