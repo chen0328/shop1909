@@ -7,14 +7,32 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    /*
+    整体
+    */
     public function index(Request $request)
     {
-        return view("admin/inc/index");
+        return view("admin/index/index");
+    }
+    /*
+    头部
+    */
+    public function head(Request $request)
+    {
+        return view("admin/index/head");
+    }
+    /*
+    左侧
+    */
+    public function left(Request $request)
+    {
+        return view("admin/index/left");
+    }
+     /*
+    主题
+    */
+    public function main(Request $request)
+    {
+        return view("admin/index/main");
     }
 }

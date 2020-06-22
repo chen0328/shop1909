@@ -16,4 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::any('admin/index', 'Admin\IndexController@index');
+Route::prefix('/admin')->group(function(){
+    Route::any('index', 'Admin\IndexController@index');//首页
+    Route::any('head', 'Admin\IndexController@head');//首页头部
+    Route::any('left', 'Admin\IndexController@left');//首页左侧
+    Route::any('main', 'Admin\IndexController@main');//首页主题
+    //导航栏
+    Route::prefix('/guide')->group(function(){
+        Route::any('add', 'Admin\GuideController@add');
+        Route::any('add_do', 'Admin\GuideController@add_do');
+        
+    });
+});
