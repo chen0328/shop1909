@@ -34,7 +34,7 @@
 				</dd>
 				<dd>
 					<img class="coin11" src="/admin/img/coin111.png" /><img class="coin22"
-						src="/admin/img/coin222.png" /><a class="cks" href="../user.html"
+						src="/admin/img/coin222.png" /><a class="cks" href="{{url('admin/guide/list')}}"
 						target="main">查看</a><img class="icon5" src="/admin/img/coin21.png" />
 				</dd>
 			</dl>
