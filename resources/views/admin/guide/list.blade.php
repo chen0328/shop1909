@@ -113,62 +113,80 @@
                 })
             }
         })
-	//即点即改
-	$(document).on('click','.sorts',function(){
-				$(this).hide();
-				$(this).next('input').show();
 
-			})
-			$(document).on('blur','.editsorts',function(){
-				var info = $(this).val();
-				var id = $(this).attr('gui_id');
-				// console.log(info);return false;
-				if(info == ''){
-					$('.sorts').show();
-					$(this).hide();
-					// loaction.reload(false);
-					return false;
-				}
-				var url = '/admin/guide/editsorts';
-				var data = {info:info,id:id};
-				$.ajax({
-					url:url,
-					data:data,
-					type:'post',
-					dataType:'json',
-					success:function(res){
-						if(res.code == 00000){
-							window.location.href=res.url;
-						}
-					}
-				})
-			})
-			$(document).on('click','.is_show',function(){
-				var info = $(this).html();
-				var info = $.trim(info);
-				if(info == '是'){
-					var val=2;
-				}else{
-					var val=1;
-				}
-				var id = $(this).parents('tr').attr('gui_id');
-				var url = '/admin/guide/edithidden';
-				var data = {val:val,id:id};
-				// console.log(data);return false;
-				$.ajax({
-					url:url,
-					data:data,
-					type:'post',
-					dataType:'json',
-					success:function(res){
-						// console.log(res);
-						if(res.code == 00000){
-							window.location.href=res.url;
-						}
-					}
-				})
-			})
-		})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+	// //即点即改
+	// $(document).on('click','.sorts',function(){
+	// 			$(this).hide();
+	// 			$(this).next('input').show();
+
+	// 		})
+	// 		$(document).on('blur','.editsorts',function(){
+	// 			var info = $(this).val();
+	// 			var id = $(this).attr('gui_id');
+	// 			// console.log(info);return false;
+	// 			if(info == ''){
+	// 				$('.sorts').show();
+	// 				$(this).hide();
+	// 				// loaction.reload(false);
+	// 				return false;
+	// 			}
+	// 			var url = '/admin/guide/editsorts';
+	// 			var data = {info:info,id:id};
+	// 			$.ajax({
+	// 				url:url,
+	// 				data:data,
+	// 				type:'post',
+	// 				dataType:'json',
+	// 				success:function(res){
+	// 					if(res.code == 00000){
+	// 						window.location.href=res.url;
+	// 					}
+	// 				}
+	// 			})
+	// 		})
+	// 		$(document).on('click','.is_show',function(){
+	// 			var info = $(this).html();
+	// 			var info = $.trim(info);
+	// 			if(info == '是'){
+	// 				var val=2;
+	// 			}else{
+	// 				var val=1;
+	// 			}
+	// 			var id = $(this).parents('tr').attr('gui_id');
+	// 			var url = '/admin/guide/edithidden';
+	// 			var data = {val:val,id:id};
+	// 			// console.log(data);return false;
+	// 			$.ajax({
+	// 				url:url,
+	// 				data:data,
+	// 				type:'post',
+	// 				dataType:'json',
+	// 				success:function(res){
+	// 					// console.log(res);
+	// 					if(res.code == 00000){
+	// 						window.location.href=res.url;
+	// 					}
+	// 				}
+	// 			})
+	// 		})
+	// 	})
 
 
 

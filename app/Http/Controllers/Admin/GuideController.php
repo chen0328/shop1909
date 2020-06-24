@@ -92,33 +92,33 @@ class GuideController extends CommonController
             return $this->message('00001','修改失败','');
         }
     }
-     /**
-     * 即点即改
-     */
-    public function editsorts(Request $request){
-        $data = $request->info;
-        $id=$request->id;
-        // var_dump($id,$data);
-        $res = Guide::where('id',$id)->update(['sorts'=>$data]);
-        if($res !== false){
-            return $this->message('00000','修改成功','/admin/guide/list');
-        }else{
-            return $this->message('00001','修改失败','');
-        }
-    }
-    public function edithidden(Request $request){
-        $data = $request->val;
-        $id=$request->id;
-        // var_dump($id,$data);exit;
-        $data = intval($data);
-        $info = ['is_show'=>$data];
-        // var_dump($info);exit;
-        $res = Guide::where('id',$id)->update($info);
-        // var_dump($res);exit;
-        if($res !== false){
-            return $this->message('00000','修改成功','/admin/guide/list');
-        }else{
-            return $this->message('00001','修改失败','');
-        }
-    }
+    //  /**
+    //  * 即点即改
+    //  */
+    // public function editsorts(Request $request){
+    //     $data = $request->info;
+    //     $id=$request->id;
+    //     // var_dump($id,$data);
+    //     $res = Guide::where('id',$id)->update(['sorts'=>$data]);
+    //     if($res !== false){
+    //         return $this->message('00000','修改成功','/admin/guide/list');
+    //     }else{
+    //         return $this->message('00001','修改失败','');
+    //     }
+    // }
+    // public function edithidden(Request $request){
+    //     $data = $request->val;
+    //     $id=$request->id;
+    //     // var_dump($id,$data);exit;
+    //     $data = intval($data);
+    //     $info = ['is_show'=>$data];
+    //     // var_dump($info);exit;
+    //     $res = Guide::where('id',$id)->update($info);
+    //     // var_dump($res);exit;
+    //     if($res !== false){
+    //         return $this->message('00000','修改成功','/admin/guide/list');
+    //     }else{
+    //         return $this->message('00001','修改失败','');
+    //     }
+    // }
 }

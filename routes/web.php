@@ -29,7 +29,7 @@ Route::prefix('/admin')->group(function(){
         Route::any('del', 'Admin\GuideController@del');
         Route::any('upd/{id}', 'Admin\GuideController@upd');
         Route::any('upd_do/{id}', 'Admin\GuideController@upd_do');
-        Route::any('editsorts', 'Admin\GuideController@editsorts');
-        Route::any('edithidden', 'Admin\GuideController@edithidden');
+        // Route::any('editsorts', 'Admin\GuideController@editsorts');
+        // Route::any('edithidden', 'Admin\GuideController@edithidden');
     });
 });
