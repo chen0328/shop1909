@@ -12,28 +12,21 @@
     <div class="pageTop">
         <div class="page">
             <img src="/admin/img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-                        href="#">导航管理</a>&nbsp;-</span>&nbsp;添加导航栏
+                        href="#">用户管理</a>&nbsp;-</span>&nbsp;添加用户
         </div>
     </div>
     <div class="page ">
         <!-- 添加导航栏页面样式 -->
         <div class="banneradd bor">
             <div class="baTop">
-                <span>添加导航栏</span>
+                <span>添加用户</span>
             </div>
             <div class="baBody">
                 <div class="bbD">
-                    导航栏名称：<input type="text" class="input1" name="gui_name" />
+                    用户名称：<input type="text" class="input1" name="gui_name" />
                 </div>
                 <div class="bbD">
-                    链接地址：<input type="text" class="input1" name="url" />
-                </div>
-                <div class="bbD">
-                    是否显示：<label><input type="radio" checked="checked" name="is_show" value="1" />是</label>
-                    <label><input name="is_show"  type="radio" value="2"/>否</label>
-                </div>
-                <div class="bbD">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排序：<input class="input2" name="sorts" type="text" />
+                    用户密码：<input type="text" class="input1" name="url" />
                 </div>
                 <div class="bbD">
                     <p class="bbDP">

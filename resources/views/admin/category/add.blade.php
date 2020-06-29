@@ -12,29 +12,24 @@
     <div class="pageTop">
         <div class="page">
             <img src="/admin/img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-                        href="#">导航管理</a>&nbsp;-</span>&nbsp;添加导航栏
+                        href="#">分类管理</a>&nbsp;-</span>&nbsp;分类添加
         </div>
     </div>
     <div class="page ">
         <!-- 添加导航栏页面样式 -->
         <div class="banneradd bor">
             <div class="baTop">
-                <span>添加导航栏</span>
+                <span>添加分类</span>
             </div>
             <div class="baBody">
                 <div class="bbD">
-                    导航栏名称：<input type="text" class="input1" name="gui_name" />
-                </div>
-                <div class="bbD">
-                    链接地址：<input type="text" class="input1" name="url" />
+                    分类名称：<input type="text" class="input1" name="cate_name" />
                 </div>
                 <div class="bbD">
                     是否显示：<label><input type="radio" checked="checked" name="is_show" value="1" />是</label>
                     <label><input name="is_show"  type="radio" value="2"/>否</label>
                 </div>
-                <div class="bbD">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排序：<input class="input2" name="sorts" type="text" />
-                </div>
+                
                 <div class="bbD">
                     <p class="bbDP">
                         <button class="btn_ok btn_yes" href="#" id="but">提交</button>
@@ -49,7 +44,7 @@
 </div>
 </body>
 </html>
-<script src="/admin/js//jquery.min.js"></script>
+<script src="/admin/js/jquery.min.js"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -59,11 +54,9 @@
     $(document).ready(function(){
         $(document).on('click','#but',function(){
             var data = {};
-            data.gui_name = $("input[name='gui_name']").val();
-            data.url = $("input[name='url']").val();
-            data.sorts = $("input[name='sorts']").val();
+            data.cate_name = $("input[name='cate_name']").val();
             data.is_show = $("input[name='is_show']:checked").val();
-            var url = '/admin/guide/add_do';
+            var url = '/admin/category/add_do';
             $.ajax({
                 url:url,
                 data:data,
