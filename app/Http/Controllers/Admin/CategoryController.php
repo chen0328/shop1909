@@ -2,87 +2,86 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Admin\Category;
 use App\Http\Controllers\CommonController;
+use App\Models\CategoryModel;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoryController extends CommonController
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function add(Request $request)
-    {
-       return view('admin.category.add');
+    public function category(){
+        return view('admin.category.index');
     }
-    public function add_do(Request $request)
-    {
+    public function addcategory(Request $request){
         $arr = $request->all();
-        // var_dump($arr);exit;
         $data['cate_name'] = $arr['cate_name'];
         $data['is_show'] = $arr['is_show'];
         $data['addtime'] = time();
-        $res = Category::insert($data);
-        if ($res) {
-            $message = [
-                'code' => '00000',
-                'msg' => '添加成功',
-                'url' => '/admin/category/list'
-            ];
-            return json_encode($message, JSON_UNESCAPED_UNICODE);
-        } else {
-            $message = [
-                'code' => '00001',
-                'msg' => '添加失败',
-                'url' => ''
-            ];
-            return json_encode($message, JSON_UNESCAPED_UNICODE);
+//        var_dump($data);exit;
+        $res = CategoryModel::insert($data);
+        if($res){
+            return $this->message('00000','添加成功','/admin/showcategory');
+        }else{
+            return $this->message('00001','添加失败','');
         }
     }
-    public function list()
-    {
-        $info = Category::where(['is_del'=>1])->orderBy('cate_id','desc')->paginate(2);
-        // var_dump($info);exit;
-        return view('admin.category.list',['info'=>$info]);
-      
-
-    }//删除
-    public function del(Request $request)
-    {
-        $cate_id = $request->cate_id;
-        // var_dump($id);die;
-        $res = Category::where('cate_id',$cate_id)->update(['is_del'=>2]);
+    public function showcategory(){
+        $info = CategoryModel::where('is_del',1)->orderBy('cate_id','asc')->paginate(2);
+        return view('admin.category.show',['info'=>$info]);
+    }
+    /**
+     * 删除功能
+     */
+    public function delcategory(Request $request){
+        $cate_id =  $request->id;
+        $res = CategoryModel::where('cate_id',$cate_id)->update(['is_del'=>2]);
         if($res){
-            return $this->message('00000','删除成功','/admin/category/list');
+            return $this->message('00000','删除成功','/admin/showcategory');
         }else{
             return $this->message('00001','删除失败','');
         }
     }
-    //修改
-    public function upd($id){
-        // $id = $request->id;
-        // var_dump($id);exit;
-        $info = Guide::where('id',$id)->first();
-        // var_dump($info);exit;
-        return view('admin.guide.upd',['info'=>$info]);
+    /**
+     * 修改功能
+     */
+    public function editcategory($id){
+        $info = CategoryModel::where('cate_id',$id)->first();
+        return view('admin.category.edit',['info'=>$info]);
     }
-            
-    public function upd_do($id){
-        // var_dump($id);exit;
-        $arr = request()->all();
-        // var_dump($arr);exit;
-        $data['gui_name'] = $arr['gui_name'];
-        $data['url'] = $arr['url'];
-        $data['sorts'] = $arr['sorts'];
+
+    public function updcategory(Request $request){
+        $arr = $request->all();
+//        var_dump($arr);exit;
+        $data['cate_name'] = $arr['cate_name'];
         $data['is_show'] = $arr['is_show'];
         $data['addtime'] = time();
-        $res = Guide::where('id',$id)->update($data);
+        $cate_id = $arr['cate_id'];
+//        var_dump($data);exit;
+        $res = CategoryModel::where('cate_id',$cate_id)->update($data);
         if($res !== false ){
-            return $this->message('00000','修改成功','/admin/guide/list');
+            return $this->message('00000','修改成功','/admin/showcategory');
+        }else{
+            return $this->message('00001','修改失败',"/admin/shownav/$cate_id");
+        }
+    }
+    /**
+     * 即点即改
+     */
+    public function catename(Request $request){
+        $info = $request->info;
+        $id = $request->id;
+        $res = CategoryModel::where('cate_id',$id)->update(['cate_name'=>$info]);
+        if($res !== false ){
+            return $this->message('00000','修改成功','/admin/showcategory');
+        }else{
+            return $this->message('00001','修改失败','');
+        }
+    }
+    public function cateshow(Request $request){
+        $info = $request->val;
+        $id = $request->id;
+        $res = CategoryModel::where('cate_id',$id)->update(['is_show'=>$info]);
+        if($res !== false ){
+            return $this->message('00000','修改成功','/admin/showcategory');
         }else{
             return $this->message('00001','修改失败','');
         }
