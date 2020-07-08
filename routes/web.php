@@ -98,3 +98,15 @@ Route::namespace('Admin')->prefix('admin')->middleware('checklogin')->group(func
     Route::get('/addmessages','IndexController@addmessages');
     Route::get('/imageCode','IndexController@imageCode');
   ########################### 前台 #############################################
+
+Route::prefix('index')->group(function(){
+    Route::any('/index','Index\IndexController@index');
+    Route::any('/show_nav','Index\IndexController@show_nav');
+    Route::any('/details','Index\IndexController@details');
+    ########################### 登录 #############################################
+    Route::any('/login','Index\LoginController@login');
+    Route::any('/reg','Index\LoginController@reg');
+    Route::any('/reg_do','Index\LoginController@reg_do');
+    Route::any('/login_do','Index\LoginController@login_do');
+    ########################### 登录 #############################################
+});
